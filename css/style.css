@@ -87,6 +87,7 @@
   border: 2px solid white;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color 1s ease;
 }
 .indicatorBullets li.active {
   background: white;
