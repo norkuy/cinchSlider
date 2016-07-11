@@ -1,5 +1,5 @@
-# simpleSlide 0.1
-A bare bones easy-to-use jQuery slider. It's currently under construction so it may be unstable.
+# cinchSlider 0.1
+A bare-bones easy-to-use jQuery slider.
 
 ## Setup
 

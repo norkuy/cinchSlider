@@ -2,7 +2,7 @@
 
 
 
-var simpleSlide = function(el, options) {
+var cinchSlider = function(el, options) {
   var numSlides = $('.slide').toArray();
   el = $(el);
   
@@ -13,7 +13,7 @@ var simpleSlide = function(el, options) {
   }
 
 
-simpleSlide.prototype.coreStart = function() {
+cinchSlider.prototype.coreStart = function() {
   el.addClass('carousel');
   var height = $(numSlides[initials.index]).height(); 
   $('.carousel').css("height", height + "px");
@@ -21,7 +21,7 @@ simpleSlide.prototype.coreStart = function() {
   $('.carousel').append('<div class="arrow-right arrows"></div>');  
 }
 
-simpleSlide.prototype.timer = function() {
+cinchSlider.prototype.timer = function() {
 
 var rotator = setInterval(function() {that.animator(initials.animation, 'right', 'true')}, initials.speed);
  
@@ -33,7 +33,7 @@ var rotator = setInterval(function() {that.animator(initials.animation, 'right',
 
 }
     
-simpleSlide.prototype.slides = function(increment) {
+cinchSlider.prototype.slides = function(increment) {
 
     if (increment === 'plus') {
     initials.index++;  
@@ -41,7 +41,7 @@ simpleSlide.prototype.slides = function(increment) {
     initials.index--;  
     }
 }
-simpleSlide.prototype.zIndexSetup = function() {
+cinchSlider.prototype.zIndexSetup = function() {
      for (var i = 0; i <= numSlides.length; i++) {
       $(numSlides[i]).css("z-index", (numSlides.length - 1) - i);
     }
@@ -50,12 +50,12 @@ simpleSlide.prototype.zIndexSetup = function() {
 
 var that = this;
   
-simpleSlide.prototype.liActive = function() {
+cinchSlider.prototype.liActive = function() {
     $('li').eq(initials.index).addClass('active');
     $('li').eq(initials.index).siblings().removeClass('active');
 }
 
-simpleSlide.prototype.animator = function(animation, direction, indicators) {
+cinchSlider.prototype.animator = function(animation, direction, indicators) {
   switch(true) {
   case(animation === 'fadeInOut' && direction === undefined && indicators === 'false'):
       this.liActive();
@@ -99,14 +99,14 @@ simpleSlide.prototype.animator = function(animation, direction, indicators) {
 
 }
 
-simpleSlide.prototype.changeSlide =  function(event) {
+cinchSlider.prototype.changeSlide =  function(event) {
 
   that.animator(event.data.animation, event.data.direction);
 
 }
 
 
-simpleSlide.prototype.activate = function() {
+cinchSlider.prototype.activate = function() {
 
   // 
   $(numSlides[initials.index]).addClass(initials.animation + ' active');  
@@ -117,7 +117,7 @@ simpleSlide.prototype.activate = function() {
   });
 }
 
-simpleSlide.prototype.indicators = function() {
+cinchSlider.prototype.indicators = function() {
   // append indicators div to slider
   var indicators = el.append('<div class="indicators"></div>').find('.indicators').append('<ul class="indicatorBullets"></ul>').find('.indicatorBullets');
   // setup indicators for each slide
@@ -145,12 +145,12 @@ if($(this).data('index') < initials.index) {
 }
 */
 
-simpleSlide.prototype.arrows = function() {
+cinchSlider.prototype.arrows = function() {
   // setup click events for arrows
   $(document).on('click', '.arrow-right',  {direction: 'right', animation: initials.animation}, this.changeSlide);
   $(document).on('click', '.arrow-left', {direction: 'left', animation: initials.animation}, this.changeSlide);
 }
-simpleSlide.prototype.init = function() {
+cinchSlider.prototype.init = function() {
     
     this.zIndexSetup();
     this.arrows();
@@ -166,19 +166,16 @@ simpleSlide.prototype.init = function() {
   
 }
 
-simpleSlide.prototype.init();
+cinchSlider.prototype.init();
 }
 
 
 
-$.fn.simpleSlide = function(options) {
+$.fn.cinchSlider = function(options) {
   return this.each(function(index, el) {
-    el.simpleSlide = new simpleSlide(el, options);
+    el.cinchSlider = new cinchSlider(el, options);
   });
 }
 
 }(jQuery));
 
-$(document).ready(function() {
-  $('.main').simpleSlide();
-});

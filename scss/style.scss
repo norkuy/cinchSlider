@@ -1,55 +1,99 @@
 .carousel {
-  width: 50%;
+  width: 100%;
   display: block;
-  margin-top: 100px;
   margin: 0 auto;
   position: relative;
-  padding-top: 35%;
 }
+
 .carousel .slide {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 100px;
   opacity: 0;
   width: 100%;
 }
+
 .slide.fadeInOut {
-    webkit-transition: opacity 0.5s ease-in-out;
-    -moz-transition: opacity 0.5s ease-in-out;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 1;
+  webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
 }
+
 .carousel .slide h1 {
   position: absolute;
   color: white;
 }
+
 .carousel .slide img {
   width: 100%;
 }
+
 .clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
-}
-.arrow-left, .arrow-right {
-  width: 50px;
-  height: 50px;
-  background: red;
-  position: absolute;
-  z-index: 5;
-  cursor: pointer;
-  
-}
-.arrow-left {
-  left: 0%;
-  top: 50%;
-}
-.arrow-right {
-  right: 0%;
-  top: 50%;
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 
+.arrow-left, .arrow-right {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 9999;
+  cursor: pointer;
+}
+.arrows {
+  border-top:3px solid #fff;
+  border-right:3px solid #fff;
+}
+.arrow-left {
+  left: 2%;
+  top: 50%;
+  transform: translate(0px,0px);
+  transition: .5s ease-in-out;
+  opacity: 0;
+}
+
+.arrow-right {
+  right: 2%;
+  top: 50%;
+  transform: translate(0px,0px) ;
+  transition: .5s ease-in-out;
+  opacity: 0;
+}
+
+.carousel:hover .arrow-right {
+  transform: translate(0,-50%) rotate(45deg);
+  opacity: 1;
+}
+.carousel:hover .arrow-left {
+  transform: translate(0,-50%) rotate(225deg);
+  opacity: 1;
+}
+.indicators {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 9999;
+}
+.indicatorBullets li {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  margin: 0 10px;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 1s ease;
+}
+.indicatorBullets li.active {
+  background: white;
+}
+.indicatorBullets {
+  -webkit-padding-start: 0px;
+  position: relative;
+  left: -50%;
+}
