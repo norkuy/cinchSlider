@@ -1,6 +1,5 @@
 .carousel {
   width: 100%;
-  display: block;
   margin: 0 auto;
   position: relative; }
 
@@ -11,6 +10,9 @@
   opacity: 0;
   width: 100%; }
 
+.carousel.load {
+  visibility: hidden;
+}
 .slide.fadeInOut {
   webkit-transition: opacity 0.5s ease-in-out;
   -webkit-transition: opacity 0.5s ease-in-out;

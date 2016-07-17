@@ -14,24 +14,39 @@ var cinchSlider = function(el, options) {
 
 
 cinchSlider.prototype.coreStart = function() {
-  el.addClass('carousel');
+  el.addClass('carousel load');
   var height = $(numSlides[initials.index]).height(); 
   $('.carousel').css("height", height + "px");
   $('.carousel').append('<div class="arrow-left arrows"></div>');
-  $('.carousel').append('<div class="arrow-right arrows"></div>');  
+  $('.carousel').append('<div class="arrow-right arrows"></div>');
+  this.pause(false);
+
 }
 
-cinchSlider.prototype.timer = function() {
+cinchSlider.prototype.isHovered = function() {
 
-var rotator = setInterval(function() {that.animator(initials.animation, 'right', 'true')}, initials.speed);
- 
- (function clearTimer() {
+    $(document).on('mouseover', '.carousel', function(e) {
+    console.log('hover');
+    that.pause(true);
+    });
+    $(document).on('mouseout', '.carousel', function(e) {
+    console.log('hover');
+    that.pause(false);
+    });  
+}
+
+
+cinchSlider.prototype.pause = function(hover) {
+   clearInterval(this.rotator);
+   if (hover === false) {
+    this.rotator = setInterval(function() {that.animator(initials.animation, 'right', 'true')}, initials.speed);
+    console.log(hover);
+    } 
   $(document).on('click', '.carousel', function() {
      clearInterval(rotator);
   });
- })();
-
 }
+
     
 cinchSlider.prototype.slides = function(increment) {
 
@@ -162,7 +177,9 @@ cinchSlider.prototype.init = function() {
     that.activate();
     // add slide indicators for each slide
     that.indicators();
-  }).load(function() {that.timer();});
+    that.isHovered();
+    $('.carousel.load').css('visibility', 'visible');
+  });
   
 }
 
