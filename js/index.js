@@ -1,26 +1,28 @@
+/*! modernizr 3.3.1 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-csstransitions-setclasses !*/
+!function(e,n,t){function r(e,n){return typeof e===n}function s(){var e,n,t,s,o,i,a;for(var l in C)if(C.hasOwnProperty(l)){if(e=[],n=C[l],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(s=r(n.fn,"function")?n.fn():n.fn,o=0;o<e.length;o++)i=e[o],a=i.split("."),1===a.length?Modernizr[a[0]]=s:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=s),g.push((s?"":"no-")+a.join("-"))}}function o(e){var n=_.className,t=Modernizr._config.classPrefix||"";if(S&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),S?_.className.baseVal=n:_.className=n)}function i(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):S?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function a(e,n){return!!~(""+e).indexOf(n)}function l(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function f(e,n){return function(){return e.apply(n,arguments)}}function u(e,n,t){var s;for(var o in e)if(e[o]in n)return t===!1?e[o]:(s=n[e[o]],r(s,"function")?f(s,t||n):s);return!1}function d(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function p(){var e=n.body;return e||(e=i(S?"svg":"body"),e.fake=!0),e}function c(e,t,r,s){var o,a,l,f,u="modernizr",d=i("div"),c=p();if(parseInt(r,10))for(;r--;)l=i("div"),l.id=s?s[r]:u+(r+1),d.appendChild(l);return o=i("style"),o.type="text/css",o.id="s"+u,(c.fake?c:d).appendChild(o),c.appendChild(d),o.styleSheet?o.styleSheet.cssText=e:o.appendChild(n.createTextNode(e)),d.id=u,c.fake&&(c.style.background="",c.style.overflow="hidden",f=_.style.overflow,_.style.overflow="hidden",_.appendChild(c)),a=t(d,e),c.fake?(c.parentNode.removeChild(c),_.style.overflow=f,_.offsetHeight):d.parentNode.removeChild(d),!!a}function m(n,r){var s=n.length;if("CSS"in e&&"supports"in e.CSS){for(;s--;)if(e.CSS.supports(d(n[s]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var o=[];s--;)o.push("("+d(n[s])+":"+r+")");return o=o.join(" or "),c("@supports ("+o+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return t}function h(e,n,s,o){function f(){d&&(delete z.style,delete z.modElem)}if(o=r(o,"undefined")?!1:o,!r(s,"undefined")){var u=m(e,s);if(!r(u,"undefined"))return u}for(var d,p,c,h,v,y=["modernizr","tspan","samp"];!z.style&&y.length;)d=!0,z.modElem=i(y.shift()),z.style=z.modElem.style;for(c=e.length,p=0;c>p;p++)if(h=e[p],v=z.style[h],a(h,"-")&&(h=l(h)),z.style[h]!==t){if(o||r(s,"undefined"))return f(),"pfx"==n?h:!0;try{z.style[h]=s}catch(g){}if(z.style[h]!=v)return f(),"pfx"==n?h:!0}return f(),!1}function v(e,n,t,s,o){var i=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+b.join(i+" ")+i).split(" ");return r(n,"string")||r(n,"undefined")?h(a,n,s,o):(a=(e+" "+E.join(i+" ")+i).split(" "),u(a,n,t))}function y(e,n,r){return v(e,t,t,n,r)}var g=[],C=[],w={_version:"3.3.1",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){C.push({name:e,fn:n,options:t})},addAsyncTest:function(e){C.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=w,Modernizr=new Modernizr;var _=n.documentElement,S="svg"===_.nodeName.toLowerCase(),x="Moz O ms Webkit",b=w._config.usePrefixes?x.split(" "):[];w._cssomPrefixes=b;var E=w._config.usePrefixes?x.toLowerCase().split(" "):[];w._domPrefixes=E;var P={elem:i("modernizr")};Modernizr._q.push(function(){delete P.elem});var z={style:P.elem.style};Modernizr._q.unshift(function(){delete z.style}),w.testAllProps=v,w.testAllProps=y,Modernizr.addTest("csstransitions",y("transition","all",!0)),s(),o(g),delete w.addTest,delete w.addAsyncTest;for(var N=0;N<Modernizr._q.length;N++)Modernizr._q[N]();e.Modernizr=Modernizr}(window,document);
+
 (function($) {
-
-
 
 var cinchSlider = function(el, options) {
   var numSlides = $('.slide').toArray();
   el = $(el);
+  var animationActive = 'false';
   
   var initials = {
     index: 0,
-    speed: 5000,
+    speed: 6000,
     animation: 'fadeInOut'
   }
 
 
 cinchSlider.prototype.coreStart = function() {
-  el.addClass('carousel load');
+  alert('jquery running');
+  el.addClass('carousel');
   var height = $(numSlides[initials.index]).height(); 
   $('.carousel').css("height", height + "px");
   $('.carousel').append('<div class="arrow-left arrows"></div>');
   $('.carousel').append('<div class="arrow-right arrows"></div>');
-  this.pause(false);
-
 }
 
 cinchSlider.prototype.isHovered = function() {
@@ -38,10 +40,12 @@ cinchSlider.prototype.isHovered = function() {
 
 cinchSlider.prototype.pause = function(hover) {
    clearInterval(this.rotator);
-   if (hover === false) {
-    this.rotator = setInterval(function() {that.animator(initials.animation, 'right', 'true')}, initials.speed);
+   if (hover === false && $('html').hasClass('csstransitions')) {
+    this.rotator = setInterval(function() {that.animator(initials.animation, 'right', 'true');}, initials.speed);
     console.log(hover);
-    } 
+    } else if (hover === false && $('html').hasClass('no-csstransitions')) {
+    this.rotator = setInterval(function() {that.animatorJS(initials.animation, 'right', 'true');}, initials.speed);
+    }
   $(document).on('click', '.carousel', function() {
      clearInterval(rotator);
   });
@@ -56,12 +60,6 @@ cinchSlider.prototype.slides = function(increment) {
     initials.index--;  
     }
 }
-cinchSlider.prototype.zIndexSetup = function() {
-     for (var i = 0; i <= numSlides.length; i++) {
-      $(numSlides[i]).css("z-index", (numSlides.length - 1) - i);
-    }
-
-}
 
 var that = this;
   
@@ -69,42 +67,78 @@ cinchSlider.prototype.liActive = function() {
     $('li').eq(initials.index).addClass('active');
     $('li').eq(initials.index).siblings().removeClass('active');
 }
+/*
+cinchSlider.prototype.zIndex = function() {
+    for (var i=0;i<=numSlides.length-1;i++) {
+      $(numSlides[i]).css('z-index', i);
+      }
+}
+*/
 
 cinchSlider.prototype.animator = function(animation, direction, indicators) {
   switch(true) {
   case(animation === 'fadeInOut' && direction === undefined && indicators === 'false'):
       this.liActive();
-      $(numSlides[initials.index]).addClass('fadeInOut active');
+      $(numSlides[initials.index]).addClass('fadeInOut');
       $(numSlides[initials.index]).siblings().removeClass('fadeInOut');
-
-    break;
+      break;
   case(animation === 'fadeInOut' && direction === 'right' && initials.index < numSlides.length - 1):
+        animationActive = 'true';
         this.slides('plus');
         this.liActive();
         $(numSlides[initials.index]).addClass('fadeInOut active');
-        $(numSlides[initials.index - 1]).removeClass('fadeInOut active');
-        $(numSlides[initials.index]).siblings().removeClass('fadeInOut active');
+        $(numSlides[initials.index]).siblings().removeClass('active');
+        $(".slide").on("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd",
+        function() {
+            $(this).siblings().removeClass("fadeInOut");
+            animationActive = 'false';
+        }
+        );
         break;
   case(animation === 'fadeInOut' && direction === 'right' && initials.index === numSlides.length - 1):
+        animationActive = 'true';
         initials.index = 0;
         this.liActive();
-        $(numSlides[initials.index]).addClass('fadeInOut active');
-        $(numSlides[numSlides.length - 1]).removeClass('fadeInOut active');
-        $(numSlides[initials.index]).siblings().removeClass('fadeInOut active');
+        $(numSlides[initials.index])
+          .addClass('fadeInOut active')
+          .siblings()
+          .removeClass('active');
+         $(".slide").on("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd",
+        function() {
+            $(this).siblings().removeClass("fadeInOut");
+            animationActive = 'false';
+        }
+        );
         break;
   case(animation === 'fadeInOut' && direction === 'left' && initials.index > 0):
-        $(numSlides[initials.index]).removeClass('fadeInOut active');
+        animationActive = 'true';
+        $(numSlides[initials.index])
+          .removeClass('active');
         this.slides('minus');
         this.liActive();
-        $(numSlides[initials.index]).addClass('fadeInOut active');       
-        $(numSlides[initials.index]).siblings().removeClass('fadeInOut active');
+        $(numSlides[initials.index])
+          .addClass('fadeInOut active');
+        $(".slide").on("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd",
+        function() {
+            $(this).siblings().removeClass("fadeInOut");
+            animationActive = 'false';
+        }
+        );
         break;
   case(animation === 'fadeInOut' && direction === 'left' && initials.index === 0):
-        $(numSlides[0]).removeClass('fadeInOut active');
+        animationActive = 'true';
+        $(numSlides[initials.index])
+          .removeClass('active');
         initials.index = numSlides.length - 1;
         this.liActive();
-        $(numSlides[initials.index]).addClass('fadeInOut active');
-        $(numSlides[initials.index]).siblings().removeClass('fadeInOut active');
+        $(numSlides[initials.index])
+          .addClass('fadeInOut active');
+        $(".slide").on("transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd",
+        function() {
+            $(this).siblings().removeClass("fadeInOut");
+            animationActive = 'false';
+        }
+        );
         break;
 }
 
@@ -114,17 +148,55 @@ cinchSlider.prototype.animator = function(animation, direction, indicators) {
 
 }
 
-cinchSlider.prototype.changeSlide =  function(event) {
-
-  that.animator(event.data.animation, event.data.direction);
-
+cinchSlider.prototype.animatorJS = function(animation, direction, indicators) {
+  switch(true) {
+  case(animation === 'fadeInOut' && direction === 'right' && initials.index < numSlides.length - 1):
+    animationActive = 'true';
+    this.slides('plus');
+    this.liActive();
+    $(numSlides[initials.index])
+      .siblings()
+      .removeClass('active');
+    $(numSlides[initials.index])
+      .addClass('active')
+      .animate({ opacity: 1 }, 1000, function() {
+        $(numSlides[initials.index]) 
+          .siblings()
+          .animate({ opacity: 0 }, 1000);
+          animationActive = 'false';
+        });
+    break;
+    case(animation === 'fadeInOut' && direction === 'right' && initials.index === numSlides.length - 1):
+    animationActive = 'true';
+    initials.index = 0;
+    this.liActive();
+    $(numSlides[initials.index])
+      .siblings()
+      .removeClass('active');
+    $(numSlides[initials.index])
+      .addClass('active')
+      .animate({ opacity: 1 }, 1000, function() {
+      $(numSlides[initials.index]) 
+        .siblings()
+        .animate({ opacity: 0 }, 1000);
+         animationActive = 'false';
+      });
+    break;
+  }
 }
 
+cinchSlider.prototype.changeSlide =  function(event) {
+  if (animationActive === 'false' && $('html').hasClass('csstransitions')) {
+  that.animator(event.data.animation, event.data.direction);
+  } else if (animationAcive === 'false' && $('html').hasClass('no-csstransitions')) {
+  that.animatorJS(even.data.animation, event.data.direction); 
+  }
+}
 
 cinchSlider.prototype.activate = function() {
 
   // 
-  $(numSlides[initials.index]).addClass(initials.animation + ' active');  
+  $(numSlides[initials.index]).addClass(initials.animation);  
   // when window resized set the slider height to current slide
   $(window).resize(function() {
   var height = $(numSlides[initials.index]).height(); 
@@ -164,21 +236,20 @@ cinchSlider.prototype.arrows = function() {
   // setup click events for arrows
   $(document).on('click', '.arrow-right',  {direction: 'right', animation: initials.animation}, this.changeSlide);
   $(document).on('click', '.arrow-left', {direction: 'left', animation: initials.animation}, this.changeSlide);
+
 }
 cinchSlider.prototype.init = function() {
-    
-    this.zIndexSetup();
+    // add slider container, set slider container height to slide height, add arrows
+    this.coreStart();
     this.arrows();
+    // add slide indicators for each slide
+    this.indicators();
+    this.isHovered();
   
   $(window).bind("load", function() {
-    // add slider container, set slider container height to slide height, add arrows
-    that.coreStart();
     // add animation and active class to first slide
     that.activate();
-    // add slide indicators for each slide
-    that.indicators();
-    that.isHovered();
-    $('.carousel.load').css('visibility', 'visible');
+    that.pause(false);
   });
   
 }
@@ -195,4 +266,8 @@ $.fn.cinchSlider = function(options) {
 }
 
 }(jQuery));
+
+
+
+
 

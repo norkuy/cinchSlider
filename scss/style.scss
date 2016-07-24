@@ -12,14 +12,42 @@
   opacity: 0;
   width: 100%;
 }
-
-.slide.fadeInOut {
-  webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
+/*
+.carousel .slide.one img {
+  height: 1100px;
 }
-
+.carousel .slide.two img {
+  height: 1000px;
+}
+.carousel .slide.three img {
+  height: 900px;
+}
+*/
+.slide.fadeInOut {
+  webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+  // z-index: 1;
+  /*
+  animation-name: fadeInOut;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  */
+}
+.active {
+  z-index: 1;
+}
+/*
+@keyframes fadeInOut {
+  from {z-index: 1; opacity: 0;};
+  to {z-index: 5; opacity: 1};
+}
+@-webkit-keyframes fadeInOut {
+  from {z-index: 1; opacity: 0;};
+  to {z-index: 5; opacity: 1};
+}
+*/
 .carousel .slide h1 {
   position: absolute;
   color: white;
@@ -44,6 +72,9 @@
   position: absolute;
   z-index: 9999;
   cursor: pointer;
+}
+.preventClick {
+  pointer-events: none;
 }
 .arrows {
   border-top:3px solid #fff;
@@ -97,3 +128,4 @@
   position: relative;
   left: -50%;
 }
+
