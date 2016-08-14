@@ -32,7 +32,7 @@ Include jQuery followed by simpleSlide.js
 
 ```
 $(document).ready(function() {
-  $('.slider').simpleSlide();
+  $('.slider').cinchSlider();
 });
 ```
 
@@ -41,6 +41,10 @@ $(document).ready(function() {
 index: 0,
 speed: 5000,
 animation: fadeInOut
+
+## Compatibility
+
+BrowserStack is being used to ensure maximum compatibility between Cinch, desktop browsers, and devices. For more information on BrowserStack please visit [BrowserStack](http://www.browserstack.com).
 
 
 
